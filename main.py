@@ -2,7 +2,7 @@ import telebot
 import os, time, re, requests, json
 
 bot = telebot.TeleBot(token=os.environ['IGPROPIC_TOKEN'])
-rfilter = r'(@\w+)+'
+rfilter = r'(@(\w|\d|\.|_)+)+'
 
 
 @bot.message_handler(commands=['start'])
