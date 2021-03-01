@@ -29,8 +29,11 @@ def get_pro_pic_hd(message, p_url):
     except json.decoder.JSONDecodeError:
         bot.reply_to(message, "Response string could not be converted to JSON, please try again later")
         return None
-    else:
+    try:
         return json_data['graphql']['user']['profile_pic_url_hd']
+    except KeyError:
+        bot.reply_to(message, "I cannot retrieve the profile picture of this account")
+        return None
 
 @bot.message_handler(regexp=rfilter)
 def send_pic(message):
