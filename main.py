@@ -25,8 +25,8 @@ def get_usernames(message):
     return usr_list
 
 
-def get_pro_pic_hd(pro_name):
-    response = requests.get(f'{pro_name}/?__a=1', headers={"User-Agent": "Mozilla/5.0"})
+def get_pro_pic_hd(p_url):
+    response = requests.get(f'{p_url}/?__a=1', headers={"User-Agent": "Mozilla/5.0"})
     json_data = json.loads(response.text)
     return json_data['graphql']['user']['profile_pic_url_hd']
 
@@ -36,7 +36,7 @@ def send_pic(message):
     usernames = get_usernames(message)
     for u in usernames:
         profile_url = f'https://www.instagram.com/{u[1:]}'
-        bot.send_photo(message.chat.id, get_pro_pic_hd(profile_name))
+        bot.send_photo(message.chat.id, get_pro_pic_hd(profile_url))
 
 
 while True:
