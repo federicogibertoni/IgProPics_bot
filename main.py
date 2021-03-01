@@ -34,7 +34,6 @@ def get_pro_pic_hd(p_url):
 
 @bot.message_handler(regexp=rfilter)
 def send_pic(message):
-    print(message)
     usernames = get_usernames(message)
     for u in usernames:
         profile_url = f'https://www.instagram.com/{u[1:]}'
